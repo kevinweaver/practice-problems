@@ -1,4 +1,4 @@
-class DactiveRecord
+class ActiveRecord
   def self.attribute(column_name)
     define_method column_name.to_sym do
       self.attributes[column_name]
@@ -48,7 +48,7 @@ class DactiveRecord
   end
 end
 
-class Cow < DactiveRecord
+class Cow < ActiveRecord
   attribute :utters
   attribute :spots
   validates :utters, presence: true
@@ -75,13 +75,13 @@ RSpec.describe Cow do
   end
 end
   
-RSpec.describe DactiveRecord do
+RSpec.describe ActiveRecord do
   after(:each) {
     @database = {}
   }
   describe "::attribute" do
     let(:dog) {
-      class Dog < DactiveRecord
+      class Dog < ActiveRecord
         attribute :paws
       end
       Dog.new 
@@ -96,7 +96,7 @@ RSpec.describe DactiveRecord do
   describe '::validates' do
     context 'presence' do
       let(:dog) {
-        class Dog < DactiveRecord
+        class Dog < ActiveRecord
           attribute :paws
           validates :paws, presence: true
         end

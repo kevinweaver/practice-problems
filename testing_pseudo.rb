@@ -49,7 +49,7 @@ FactoryGirl.define do
   end
   
   factory :user_biller, class: User::Biller do
-    first_name 'Dean'
+    first_name 'Kevin'
     ...
   end
 end
